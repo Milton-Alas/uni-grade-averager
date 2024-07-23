@@ -45,13 +45,13 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div id='calendar' class="summary-item" onclick="openCalendar()">
+                    <div id='calendarButton' class="summary-item" onclick="openCalendar()">
                         <h3><i class="far fa-calendar-alt"></i></h3>
                         <p>Calendario</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="summary-item" onclick="openPopup()">
+                    <div class="summary-item" onclick="openLinksPopup()">
                         <h3><i class="fas fa-link"></i></h3>
                         <p>Links de clases</p>
                     </div>
@@ -62,7 +62,7 @@
         <!--POPUP links de clases-->
         <div id="linksPopup" class="popup">
             <div class="popup-content">
-                <span class="close-popup" onclick="closePopup()">&times;</span>
+                <span class="close-Linkspopup" onclick="closeLinksPopup()">&times;</span>
                 <h2>Enlaces de clases</h2>
                 <h3>Materia 1</h3>
                 <ul>
@@ -99,7 +99,7 @@
             <div class="popup-content">
                 <span class="close-popup" onclick="closeCalendar()">&times;</span>
                 <h2>Agenda de Eventos</h2>
-                <div id="calendar"></div>
+                <div id="calendarContainer"></div>
             </div>
         </div>
 
@@ -108,11 +108,12 @@
                 <!--DEC-->
                 <div class="card h-100">
                     <div class="card-header">
-                        <span><i class="fas fa-code card-icon" aria-hidden="true"></i> DEC</span>
+                        <span><i class="fas fa-code card-icon" aria-hidden="true"></i>GPO135</span>
                         <span id="promedioBadgeDec" class="badge bg-light text-primary">0.00</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Desarrollo de Competencias</h5>
+                        <h5 class="card-title">Gestión y Programación de Sistemas Operativos I</h5>
+                        </h5>
 
                         <div class="table-responsive mt-4">
                             <table class="table table-striped table-hover mb-0">
@@ -208,11 +209,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card h-100">
                     <div class="card-header">
-                        <span><i class="fas fa-database card-icon" aria-hidden="true"></i> CDA</span>
+                        <span><i class="fa fa-area-chart card-icon" aria-hidden="true"></i>IGE135</span>
                         <span id="promedioBadgeCda" class="badge bg-light text-primary">0.00</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Calculo para Numero para Desarrollo de Aplicaciones</h5>
+                        <h5 class="card-title">Introducción a la Gestión Empresarial</h5>
 
                         <div class="table-responsive mt-4">
                             <table class="table table-striped table-hover mb-0">
@@ -347,11 +348,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card h-100">
                     <div class="card-header">
-                        <span><i class="fas fa-sitemap card-icon" aria-hidden="true"></i> ADS</span>
+                        <span><i class="fas fa-sitemap card-icon" aria-hidden="true"></i> ADS235</span>
                         <span id="promedioBadgeAds" class="badge bg-light text-primary">0.00</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Análisis y Diseño de Software</h5>
+                        <h5 class="card-title">Análisis y Diseño de Software II</h5>
 
                         <div class="table-responsive mt-4">
                             <table class="table table-striped table-hover mb-0">
@@ -466,11 +467,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card h-100">
                     <div class="card-header">
-                        <span><i class="fas fa-laptop-code card-icon" aria-hidden="true"></i> DAW</span>
+                        <span><i class="fas fa-laptop-code card-icon" aria-hidden="true"></i>PMM135</span>
                         <span id="promedioBadgeDaw" class="badge bg-light text-primary">0.00</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Desarrollo de Aplicaciones Web</h5>
+                        <h5 class="card-title">Programación de Modelos Matemáticos</h5>
                         <div class="table-responsive mt-4">
                             <table class="table table-striped table-hover mb-0">
                                 <thead>
@@ -584,11 +585,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card h-100">
                     <div class="card-header">
-                        <span><i class="fas fa-chart-pie card-icon" aria-hidden="true"></i> AFI</span>
+                        <span><i class="fas fa-chart-pie card-icon" aria-hidden="true"></i>PND135</span>
                         <span id="promedioBadgeAfi" class="badge bg-light text-primary">0.00</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Análisis de las Finanzas</h5>
+                        <h5 class="card-title">Plan de Negocios</h5>
 
                         <div class="table-responsive mt-4">
                             <table class="table table-striped table-hover mb-0">
@@ -710,6 +711,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/main.js"></script>
 

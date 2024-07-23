@@ -234,7 +234,7 @@ function closeCalendar() {
 }
 
 function loadCalendar() {
-  const calendarEl = document.getElementById('calendar');
+  const calendarEl = document.getElementById('calendarContainer');
   
   const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
@@ -254,38 +254,41 @@ function loadCalendar() {
       themeSystem: 'bootstrap',
       height: 'auto',
       events: function(fetchInfo, successCallback, failureCallback) {
-          const url = 'https://campus.ues.edu.sv/calendar/export_execute.php?userid=323494&authtoken=0699d1ad7c20510ed0fb6befdf6306d7cb9f10d3&preset_what=all&preset_time=recentupcoming';
-          
-          fetch(url)
-              .then(response => {
-                  if (!response.ok) {
-                      throw new Error('Error en la respuesta de la red');
-                  }
-                  return response.text();
-              })
-              .then(data => {
-                  const jcalData = ICAL.parse(data);
-                  const comp = new ICAL.Component(jcalData);
-                  const vevents = comp.getAllSubcomponents('vevent');
-                  
-                  const events = vevents.map(vevent => {
-                      const event = new ICAL.Event(vevent);
-                      return {
-                          title: event.summary,
-                          start: event.startDate.toJSDate(),
-                          end: event.endDate.toJSDate(),
-                          allDay: !event.startDate.isDate,
-                          description: event.description,
-                          location: event.location
-                      };
-                  });
-
-                  successCallback(events);
-              })
-              .catch(error => {
-                  console.error('Error:', error);
-                  failureCallback(error);
-              });
+        var xhr = new XMLHttpRequest();
+        var url = 'https://campus.ues.edu.sv/calendar/export_execute.php?userid=323494&authtoken=0699d1ad7c20510ed0fb6befdf6306d7cb9f10d3&preset_what=all&preset_time=recentupcoming';
+        
+        xhr.open('GET', url, true);
+        
+        xhr.onload = function() {
+          if (xhr.status >= 200 && xhr.status < 400) {
+            var data = xhr.responseText;
+            var jcalData = ICAL.parse(data);
+            var comp = new ICAL.Component(jcalData);
+            var vevents = comp.getAllSubcomponents('vevent');
+            var events = vevents.map(function(vevent) {
+              var event = new ICAL.Event(vevent);
+              return {
+                title: event.summary,
+                start: event.startDate.toJSDate(),
+                end: event.endDate.toJSDate(),
+                allDay: !event.startDate.isDate,
+                description: event.description,
+                location: event.location
+              };
+            });
+            successCallback(events);
+          } else {
+            console.error('Error en la respuesta del servidor:', xhr.status, xhr.statusText);
+            failureCallback(new Error('Error en la respuesta del servidor: ' + xhr.status));
+          }
+        };
+        
+        xhr.onerror = function() {
+          console.error('Error de red');
+          failureCallback(new Error('Error de red'));
+        };
+        
+        xhr.send();
       },
       eventClick: function(info) {
           alert('Evento: ' + info.event.title + '\n' +
@@ -305,4 +308,13 @@ function loadCalendar() {
   });
 
   calendar.render();
+}
+
+//links de clases
+function openLinksPopup() {
+  document.getElementById('linksPopup').style.display = 'block';
+}
+
+function closeLinksPopup() {
+  document.getElementById('linksPopup').style.display = 'none';
 }
