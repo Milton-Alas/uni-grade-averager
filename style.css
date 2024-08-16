@@ -314,3 +314,150 @@ body {
         margin-top: 1rem;
     }
 }
+
+/*ajustar el tamano del iput donde se muestran los promedios*/
+#pads {
+    /*width: 30px; /* o un valor específico como 100px */
+    /*min-width: 30px; /* ajusta este valor según sea necesario */
+    font-size: 16px; 
+}
+
+
+/*estilos calendario*/
+#calendar {
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+    border: none;
+    padding: 12px 25px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2980b9 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+.fc-header-toolbar {
+    margin-bottom: 1.5em !important;
+    padding: 15px;
+    background-color: var(--background-color);
+}
+.fc-day-today {
+    background-color: #e8f4fd !important;
+}
+.fc-event {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 3px 8px;
+    font-size: 0.85em;
+    border-radius: 15px;
+    font-weight: 500;
+}
+.fc-button-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+.fc-button-primary:not(:disabled):active,
+.fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #2980b9 !important;
+    border-color: #2980b9 !important;
+}
+.fc-col-header-cell {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+}
+.popup-content {
+    background-color: var(--card-background);
+    margin: 5% auto;
+    padding: 40px;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.close-popup {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.close-popup:hover,
+.close-popup:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*estilos popups
+h2 {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+h3 {
+    color: var(--primary-color);
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+li {
+    margin-bottom: 10px;
+}
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--background-color);
+    border-radius: 20px;
+}
+a:hover {
+    color: var(--primary-color);
+    background-color: #d6eaf8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+@media (max-width: 768px) {
+    .popup-content {
+        width: 95%;
+        padding: 20px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+}
+
+*/
