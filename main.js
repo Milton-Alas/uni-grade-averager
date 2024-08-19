@@ -253,80 +253,77 @@ document.getElementById('calendarPopup').style.display = 'none';
 }
 
 function loadCalendar() {
-const calendarEl = document.getElementById('calendarContainer');
+  const calendarEl = document.getElementById('calendarContainer');
 
-const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: '' // Eliminamos las opciones de vista aquí
+      },
+      buttonText: {
+          today: 'Hoy'
+      },
+      locale: 'es',
+      themeSystem: 'bootstrap',
+      height: 'auto',
+      events: function(fetchInfo, successCallback, failureCallback) {
+        var targetUrl = 'https://campus.ues.edu.sv/calendar/export_execute.php?userid=323494&authtoken=0699d1ad7c20510ed0fb6befdf6306d7cb9f10d3&preset_what=all&preset_time=recentupcoming';
+        var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(targetUrl);
+        
+        fetch(proxyUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(data => {
+                try {
+                    var jcalData = ICAL.parse(data);
+                    var comp = new ICAL.Component(jcalData);
+                    var vevents = comp.getAllSubcomponents('vevent');
+                    var events = vevents.map(function(vevent) {
+                        var event = new ICAL.Event(vevent);
+                        return {
+                            title: event.summary,
+                            start: event.startDate.toJSDate(),
+                            end: event.endDate.toJSDate(),
+                            allDay: !event.startDate.isDate,
+                            description: event.description,
+                            location: event.location
+                        };
+                    });
+                    successCallback(events);
+                } catch (error) {
+                    console.error('Error al procesar los datos del calendario:', error);
+                    failureCallback(error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                failureCallback(error);
+            });
     },
-    buttonText: {
-        today: 'Hoy',
-        month: 'Mes',
-        week: 'Semana',
-        day: 'Día',
-        list: 'Lista'
-    },
-    locale: 'es',
-    themeSystem: 'bootstrap',
-    height: 'auto',
-    events: function(fetchInfo, successCallback, failureCallback) {
-      var xhr = new XMLHttpRequest();
-      var url = 'https://campus.ues.edu.sv/calendar/export_execute.php?userid=323494&authtoken=0699d1ad7c20510ed0fb6befdf6306d7cb9f10d3&preset_what=all&preset_time=recentupcoming';
-      
-      xhr.open('GET', url, true);
-      
-      xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 400) {
-          var data = xhr.responseText;
-          var jcalData = ICAL.parse(data);
-          var comp = new ICAL.Component(jcalData);
-          var vevents = comp.getAllSubcomponents('vevent');
-          var events = vevents.map(function(vevent) {
-            var event = new ICAL.Event(vevent);
-            return {
-              title: event.summary,
-              start: event.startDate.toJSDate(),
-              end: event.endDate.toJSDate(),
-              allDay: !event.startDate.isDate,
-              description: event.description,
-              location: event.location
-            };
+      eventClick: function(info) {
+          alert('Evento: ' + info.event.title + '\n' +
+                'Inicio: ' + info.event.start.toLocaleString() + '\n' +
+                (info.event.end ? 'Fin: ' + info.event.end.toLocaleString() + '\n' : '') +
+                (info.event.extendedProps.description ? 'Descripción: ' + info.event.extendedProps.description + '\n' : '') +
+                (info.event.extendedProps.location ? 'Ubicación: ' + info.event.extendedProps.location : ''));
+      },
+      eventDidMount: function(info) {
+          $(info.el).tooltip({
+              title: info.event.title,
+              placement: 'top',
+              trigger: 'hover',
+              container: 'body'
           });
-          successCallback(events);
-        } else {
-          console.error('Error en la respuesta del servidor:', xhr.status, xhr.statusText);
-          failureCallback(new Error('Error en la respuesta del servidor: ' + xhr.status));
-        }
-      };
-      
-      xhr.onerror = function() {
-        console.error('Error de red');
-        failureCallback(new Error('Error de red'));
-      };
-      
-      xhr.send();
-    },
-    eventClick: function(info) {
-        alert('Evento: ' + info.event.title + '\n' +
-              'Inicio: ' + info.event.start.toLocaleString() + '\n' +
-              (info.event.end ? 'Fin: ' + info.event.end.toLocaleString() + '\n' : '') +
-              (info.event.extendedProps.description ? 'Descripción: ' + info.event.extendedProps.description + '\n' : '') +
-              (info.event.extendedProps.location ? 'Ubicación: ' + info.event.extendedProps.location : ''));
-    },
-    eventDidMount: function(info) {
-        $(info.el).tooltip({
-            title: info.event.title,
-            placement: 'top',
-            trigger: 'hover',
-            container: 'body'
-        });
-    }
-});
+      }
+  });
 
-calendar.render();
+  calendar.render();
 }
 
 //links de clases

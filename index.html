@@ -12,6 +12,7 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/ical.js@1.5.0/build/ical.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="/style.css">
@@ -62,29 +63,32 @@
         <!--POPUP links de clases-->
         <div id="linksPopup" class="popup">
             <div class="popup-content">
-                <span class="close-Linkspopup" onclick="closeLinksPopup()">&times;</span>
+                <span class="close-popup" onclick="closeLinksPopup()">&times;</span>
                 <h2>Enlaces de clases</h2>
                 <h3>ADS235</h3>
                 <ul>
                     <li><a href="https://meet.google.com/igq-ffmo-qcn" target="_blank">GT01</a></li>
+                    <li><a href="https://meet.google.com/tdj-yruu-ebu" target="_blank">GT02 - Sábado 6:50-8:30 PM</a></li>
                 </ul>
 
                 <h3>PMM135</h3>
                 <ul>
-                    <li><a href="https://meet.google.com/inm-dxiq-czd" target="_blank">GT01</a></li>
+                    <li><a href="https://meet.google.com/inm-dxiq-czd" target="_blank">GT01 - Viernes 6:00-7:40 PM</a></li>
+                    <li><a href="https://meet.google.com/bgk-mooj-vda" target="_blank">GT02 - Domingo 6:00-7:40 PM</a></li>
                 </ul>
 
                 <h3>PND135</h3>
                 <ul>
-                    <li><a href="https://meet.google.com/hkq-yzaa-mze" target="_blank">GT03</a></li>
+                    <li><a href="https://meet.google.com/twi-syuu-fdx" target="_blank">GT01 - Sábado 1:50-3:30 PM</a></li>
+                    <li><a href="https://meet.google.com/hkq-yzaa-mze" target="_blank">GT03 - Viernes 4:20-6:00 PM</a></li>
                 </ul>
                 <h3>GPO135</h3>
                 <ul>
-                    <li><a href="https://meet.google.com/shh-nyfc-ebq" target="_blank">GT02</a></li>
+                    <li><a href="https://meet.google.com/shh-nyfc-ebq" target="_blank">GT02 - Miércoles 6:50-8:30 PM</a></li>
                 </ul>
                 <h3>IGE135</h3>
                 <ul>
-                    <li><a href="https://meet.google.com/cpd-omig-mxk" target="_blank">GT02</a></li>
+                    <li><a href="https://meet.google.com/cpd-omig-mxk" target="_blank">GT02 - Domingo 4:20-6:00 PM</a></li>
                 </ul>
             </div>
         </div>
@@ -224,7 +228,7 @@
                                 <button type="button" class="btn btn-primary btn-sm" id="calcularPromedioBtnAds"
                                     onclick="calcularPromedioAds()">
                                     Calcular Promedio
-                                </button>
+                                </button>                                
                                 <div class="input-group" style="max-width: 150px;">
                                     <span class="input-group-text">Promedio</span>
                                     <input type="text" class="form-control" id="pads" placeholder="0.00"
@@ -232,6 +236,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!--Descomentar cuando agregue la funcion del avance de ciclo
 
                         <div class="mt-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -243,6 +249,7 @@
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
@@ -379,6 +386,8 @@
                             </div>
                         </div>
 
+                        <!--Descomentar cuando agregue la funcion del avance de ciclo
+
                         <div class="mt-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span>Progreso del curso:</span>
@@ -389,6 +398,7 @@
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
@@ -508,6 +518,8 @@
                             </div>
                         </div>
 
+                        <!--Descomentar cuando agregue la funcion del avance de ciclo
+
                         <div class="mt-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span>Progreso del curso:</span>
@@ -518,6 +530,7 @@
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
@@ -611,6 +624,8 @@
                             </div>
                         </div>
 
+                        <!--Descomentar cuando agregue la funcion del avance de ciclo
+
                         <div class="mt-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span>Progreso del curso:</span>
@@ -621,6 +636,7 @@
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
@@ -752,6 +768,8 @@
                             </div>
                         </div>
 
+                        <!--Descomentar cuando agregue la funcion del avance de ciclo
+
                         <div class="mt-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span>Progreso del curso:</span>
@@ -762,6 +780,7 @@
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
