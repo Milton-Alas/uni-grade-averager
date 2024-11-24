@@ -11,22 +11,22 @@ function calcularPromedio() {
 // Get the values from the input fields
 const parcial1 = parseFloat(document.getElementById('parcial1Materia1').value)|| 0;
 const parcial2 = parseFloat(document.getElementById('parcial2Materia1').value)|| 0;
-const parcial3 = parseFloat(document.getElementById('parcial3Materia1').value)|| 0;
+//const parcial3 = parseFloat(document.getElementById('parcial3Materia1').value)|| 0;
 const proyectoFinal = parseFloat(document.getElementById('proyectoFinalMateria1').value)|| 0;
-/* descomentar para agregar mas evaluaciones
-const tarea1 = parseFloat(document.getElementById('tarea1Materia1').value)|| 0;
-const tarea2 = parseFloat(document.getElementById('tarea2Materia1').value)|| 0;
-const tarea3 = parseFloat(document.getElementById('tarea3Materia1').value)|| 0;
-const tarea4 = parseFloat(document.getElementById('tarea4Materia1').value)|| 0;
-const tarea5 = parseFloat(document.getElementById('tarea5Materia1').value)|| 0;
-const tarea6 = parseFloat(document.getElementById('tarea6Materia1').value)|| 0;
-*/
+const corto1 = parseFloat(document.getElementById('corto1Materia1').value)|| 0;
+const corto2 = parseFloat(document.getElementById('corto2Materia1').value)|| 0;
+const guia1 = parseFloat(document.getElementById('guia1Materia1').value)|| 0;
+const guia2 = parseFloat(document.getElementById('guia2Materia1').value)|| 0;
+const guia3 = parseFloat(document.getElementById('guia3Materia1').value)|| 0;
+const guia4 = parseFloat(document.getElementById('guia4Materia1').value)|| 0;
+
 // Calculate the weighted average (replace 0.0334 with your task weight)
 const promedio = (
-    (parcial1 * 0.25) +
-    (parcial2 * 0.25) +
-    (parcial3 * 0.25) +
-    (proyectoFinal * 0.25) 
+    (parcial1 * 0.20) +
+    (parcial2 * 0.20) +
+    (proyectoFinal * 0.20)+
+    (corto1+corto2)/2*0.20 +
+    ((guia1+guia2+guia3+guia4)/4)*0.20 
 
     /* descomentar para agregar mas evaluaciones
     (tarea1 * 0.0334) + // Replace with your weight for tarea1 (e.g., 0.05)
